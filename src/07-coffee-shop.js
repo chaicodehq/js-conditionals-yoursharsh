@@ -30,6 +30,35 @@
  * @param {{ whippedCream?: boolean, extraShot?: boolean }} extras - Optional extras
  * @returns {number} Total price or -1 for invalid input
  */
-export function calculateCoffeePrice(size, type, extras = {}) {
-  // Your code here
+export function calculateCoffeePrice(size, type, extras) {
+  let price;
+  if (size === "small") {
+    price = 3;
+  } else if (size === "medium") {
+    price = 4;
+  } else if (size === "large") {
+    price = 5;
+  } else {
+    return -1;
+  }
+  if (type === "regular") {
+    price += 0;
+  } else if (type === "latte") {
+    price += 1;
+  } else if (type === "cappuccino") {
+    price += 1.5;
+  } else if (type === "mocha") {
+    price += 2;
+  } else {
+    return -1;
+  }
+  if (extras?.whippedCream === true) {
+    price += 0.5;
+  }
+
+  if (extras?.extraShot === true) {
+    price += 0.75;
+  }
+
+  return Number(price.toFixed(2));
 }
